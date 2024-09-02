@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package p2p;
+
+service PeerService {
+  // Registro de un nuevo peer
+  rpc RegisterPeer(RegisterRequest) returns (RegisterResponse);
+
+  // Búsqueda de archivos
+  rpc SearchFile(SearchRequest) returns (SearchResponse);
+
+  // Descarga de archivos
+  rpc DownloadFile(DownloadRequest) returns (FileResponse);
+
+  // Subida de archivos
+  rpc UploadFile(UploadRequest) returns (UploadResponse);
+}
+
+// Mensajes para registrar un peer
+message RegisterRequest {
+  string peer_id = 1;
+  string ip = 2;
+  int32 port = 3;
+}
+
+message RegisterResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+// Mensajes para buscar archivos
+message SearchRequest {
+  string query = 1;
+}
+
+message SearchResponse {
+  repeated string file_urls = 1;
+}
+
+// Mensajes para descargar un archivo
+message DownloadRequest {
+  string file_name = 1;
+}
+
+message FileResponse {
+  bytes file_content = 1;
+}
+
+// Mensajes para subir un archivo
+message UploadRequest {
+  string file_name = 1;
+  bytes file_content = 2;
+}
+
+message UploadResponse {
+  bool success = 1;
+  string message = 2;
+}
