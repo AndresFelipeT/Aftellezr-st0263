@@ -32,32 +32,34 @@ pika (versión 1.2.0)
 flask (versión 2.0.1) para la API REST
 Cómo se compila y ejecuta
 Compilación del archivo .proto:
-'''
-bash
-python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. peer_service.proto
-'''
+
+```
+  bash
+  python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. peer_service.proto
+```
 
 Ejecución del servidor (PServidor):
-'''
+
+```
 bash
 python peer_server.py
-'''
+```
 
 Ejecución del cliente (PCliente):
-'''
+```
 bash
 python peer_client.py
-'''
+```
 Ejecución del publicador:
-'''
+```
 bash
 python publisher.py
-'''
+```
 Ejecución del consumidor:
-'''
+```
 bash
 python consumer.py
-'''
+```
 Detalles del desarrollo
 Parámetros del proyecto:
 IP: 0.0.0.0 para aceptar conexiones externas
@@ -65,7 +67,7 @@ Puerto: 50051 para gRPC
 Cola RabbitMQ: file_notifications
 Directorio de archivos: Configurable a través del archivo de configuración.
 Estructura de directorios y archivos importante del proyecto
-'''
+```
 text
 project/
 ├── peer_client.py
@@ -76,16 +78,16 @@ project/
 ├── peer_service_pb2_grpc.py
 ├── peer_service.proto
 └── config.json
-'''
+```
 
 ## 4. Descripción del ambiente de EJECUCIÓN (en producción)
 Lenguaje de programación: Python 3.8
 Librerías y paquetes:
-'''
+```
 grpcio (versión 1.42.0)
 pika (versión 1.2.0)
 flask (versión 2.0.1)
-'''
+```
 Configuración del entorno
 IP o nombres de dominio: ec2-xx-xx-xx-xx.compute-1.amazonaws.com (ejemplo de instancia en AWS)
 Parámetros de configuración:
